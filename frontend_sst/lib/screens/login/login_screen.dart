@@ -70,16 +70,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 // Usei um Placeholder que simula sua logo amarela e preta
                 Container(
                   height: 120,
-                  child: Image.network(
-                    "https://i.ibb.co/3ykM6vN/logo-seguro.png", // Substitua pelo link real ou asset
-                    errorBuilder: (context, error, stackTrace) => 
-                      Icon(Icons.shield, size: 80, color: Colors.amber),
+                  child: Image.asset(
+                    "assets/images/logo.png",
+                    fit: BoxFit.contain, // Corrigido aqui
+                    errorBuilder: (context, error, stackTrace) {
+                      return Icon(Icons.shield, size: 80, color: Colors.amber);
+                    },
                   ),
                 ),
                 SizedBox(height: 10),
                 Text(
                   "GESTÃO SST",
-                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.black, color: Color(0xFF1A1A1A)),
+                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, // Use .bold ou .w900 para o peso máximo
+                    color: Color(0xFF1A1A1A),    // Verifique se termina com parêntese ')'
+                  ),
                 ),
                 Divider(height: 40, thickness: 1.2),
 
