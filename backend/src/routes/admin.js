@@ -88,4 +88,32 @@ router.delete('/usuarios/:id', async (req, res) => {
     }
 });
 
+// ==========================================
+// ROTAS DE CONFIGURAÇÃO (CORES E LOGO)
+// ==========================================
+
+// Buscar a cor e logo atuais
+router.get('/configuracoes', async (req, res) => {
+    try {
+        const [config] = await db.promise().query('SELECT * FROM configuracoes WHERE id = 1');
+        res.json(config[0]);
+    } catch (erro) {
+        res.status(500).json({ erro: 'Erro ao buscar configurações' });
+    }
+});
+
+// Salvar a nova cor e logo
+router.put('/configuracoes', async (req, res) => {
+    try {
+        const { nome_empresa, cor_tema, url_logo } = req.body;
+        await db.promise().query(
+            'UPDATE configuracoes SET nome_empresa = ?, cor_tema = ?, url_logo = ? WHERE id = 1',
+            [nome_empresa, cor_tema, url_logo]
+        );
+        res.json({ mensagem: 'Configurações atualizadas com sucesso!' });
+    } catch (erro) {
+        res.status(500).json({ erro: 'Erro ao atualizar configurações' });
+    }
+});
+
 module.exports = router;
