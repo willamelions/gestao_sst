@@ -1,9 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const db = require('./config/db'); // Ajustado para rodar de dentro de /src
+const db = require('./config/db'); 
 
-// Importação das Rotas (Como server.js está em /src, o caminho é relativo a ele)
+// Importação das Rotas
 const importacaoRoutes = require('./routes/importacao'); 
 const dashboardRoutes = require('./routes/dashboard');
 const acidentesRoutes = require('./routes/acidentes');
@@ -14,21 +14,28 @@ const adminRoutes = require('./routes/admin');
 
 const app = express();
 
-app.use(cors());
+// =============================================================
+// 1. CONFIGURAÇÃO DE SEGURANÇA (CORS) - MATA O "ERRO DE CONEXÃO"
+// =============================================================
+app.use(cors({
+  origin: '*', // Permite que qualquer origem acesse a API (essencial para o Render)
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(express.json());
 
 // =============================================================
-// 1. CONFIGURAÇÃO DOS CAMINHOS (IMPORTANTE!)
+// 2. CONFIGURAÇÃO DOS CAMINHOS (ESTÁTICOS) - MATA O "NOT FOUND"
 // =============================================================
-// Como este arquivo está em 'backend/src', precisamos subir um nível (..) 
-// para chegar na pasta 'public/web'
-const publicPath = path.join(__dirname, '..', 'public', 'web');
+// path.resolve garante o caminho correto no Linux do Render
+const publicPath = path.resolve(__dirname, '..', 'public', 'web');
 
-// Servir arquivos estáticos do Flutter
+// Serve os arquivos do Flutter
 app.use(express.static(publicPath));
 
 // =============================================================
-// 2. ROTAS DA API
+// 3. ROTAS DA API
 // =============================================================
 app.use('/api', importacaoRoutes);
 app.use('/api/dashboard', dashboardRoutes);
@@ -39,11 +46,15 @@ app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
 
 // =============================================================
-// 3. ROTA CORINGA (CORRIGIDA)
+// 4. ROTA CORINGA PARA SINGLE PAGE APPLICATION (SPA)
 // =============================================================
-// Usa a expressão regular /.*/ para evitar o erro do Render
+// Se não for uma rota de API e não for um arquivo físico, envia o index.html
 app.get(/.*/, (req, res) => {
-  res.sendFile(path.join(publicPath, 'index.html'));
+    // Evita que erros em chamadas de API retornem o index.html
+    if (req.url.startsWith('/api')) {
+        return res.status(404).json({ erro: 'Rota de API não encontrada' });
+    }
+    res.sendFile(path.join(publicPath, 'index.html'));
 });
 
 const PORT = process.env.PORT || 3000;
