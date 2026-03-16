@@ -32,7 +32,7 @@ app.use('/api/admin', adminRoutes);
 
 // 3. ROTA CORINGA: Se o usuário acessar qualquer rota que não seja da API,
 // o servidor envia o index.html do Flutter. Isso permite que o Refresh da página funcione.
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
