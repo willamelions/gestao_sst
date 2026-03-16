@@ -33,9 +33,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Future<void> buscarDadosDoDashboard() async {
     setState(() => carregando = true);
     try {
-      var urlIndicadores = Uri.parse("http://localhost:3000/api/dashboard/indicadores/$empresaSelecionada");
-      var urlPizza = Uri.parse("http://localhost:3000/api/dashboard/grafico-tipo/$empresaSelecionada");
-      var urlMensal = Uri.parse("http://localhost:3000/api/dashboard/grafico-mensal/$empresaSelecionada");
+      var urlIndicadores = Uri.parse("https://meu-sst-backend.onrender.com/api/dashboard/indicadores/$empresaSelecionada");
+      var urlPizza = Uri.parse("https://meu-sst-backend.onrender.com/api/dashboard/grafico-tipo/$empresaSelecionada");
+      var urlMensal = Uri.parse("https://meu-sst-backend.onrender.com/api/dashboard/grafico-mensal/$empresaSelecionada");
 
       var resInd = await http.get(urlIndicadores);
       var resPiz = await http.get(urlPizza);

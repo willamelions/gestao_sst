@@ -31,7 +31,7 @@ class _AbsenteismoScreenState extends State<AbsenteismoScreen> {
   Future<void> buscarDados() async {
     setState(() => carregando = true);
     try {
-      var url = Uri.parse("http://localhost:3000/api/absenteismo/indicadores/$empresaSelecionada");
+      var url = Uri.parse("https://meu-sst-backend.onrender.com/api/absenteismo/indicadores/$empresaSelecionada");
       var resposta = await http.get(url);
       if (resposta.statusCode == 200) {
         setState(() { dados = jsonDecode(resposta.body); carregando = false; });
@@ -58,7 +58,7 @@ class _AbsenteismoScreenState extends State<AbsenteismoScreen> {
     if (tipoSelecionado == 'Médico' && cidCtrl.text.isEmpty) { _aviso("CID Obrigatório.", Colors.red); return; }
 
     setState(() => carregando = true);
-    var url = Uri.parse("http://localhost:3000/api/absenteismo/registrar");
+    var url = Uri.parse("https://meu-sst-backend.onrender.com/api/absenteismo/registrar");
     await http.post(url, headers: {"Content-Type": "application/json"},
       body: jsonEncode({"empresa_id": int.parse(empresaSelecionada), "funcionario": funcCtrl.text, "data_inicio": DateFormat('yyyy-MM-dd').format(dataInicio!), "data_fim": DateFormat('yyyy-MM-dd').format(dataFim!), "total_dias": totalDias, "tipo": tipoSelecionado, "motivo": motivoCtrl.text, "cid": cidCtrl.text}),
     );
@@ -68,7 +68,7 @@ class _AbsenteismoScreenState extends State<AbsenteismoScreen> {
 
   Future<void> excluirRegistro(int id) async {
     setState(() => carregando = true);
-    await http.delete(Uri.parse("http://localhost:3000/api/absenteismo/excluir/$id"));
+    await http.delete(Uri.parse("https://meu-sst-backend.onrender.com/api/absenteismo/excluir/$id"));
     buscarDados(); _aviso("Excluído.", Colors.green);
   }
 

@@ -22,7 +22,7 @@ class _RatScreenState extends State<RatScreen> {
   Future<void> buscarRelatorio() async {
     setState(() => carregando = true);
     try {
-      var url = Uri.parse("http://localhost:3000/api/fap/estrategico/$empresaSelecionada");
+      var url = Uri.parse("https://meu-sst-backend.onrender.com/api/fap/estrategico/$empresaSelecionada");
       var resposta = await http.get(url);
       if (resposta.statusCode == 200) {
         setState(() {

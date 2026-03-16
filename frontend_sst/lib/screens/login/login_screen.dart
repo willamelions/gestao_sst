@@ -17,7 +17,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> fazerLogin() async {
     setState(() => carregando = true);
     try {
-      var url = Uri.parse("http://localhost:3000/api/auth/login");
+      var url = Uri.parse("https://meu-sst-backend.onrender.com/api/auth/login");
       var resposta = await http.post(
         url, headers: {"Content-Type": "application/json"},
         body: jsonEncode({"email": emailCtrl.text, "senha": senhaCtrl.text}),

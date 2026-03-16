@@ -24,7 +24,7 @@ class _AcidentesScreenState extends State<AcidentesScreen> {
     try {
       // Se for "0" (Visão Geral), nós mandamos o ID que o backend trata ou filtramos no Node
       // Para listar acidentes, geralmente queremos de uma empresa específica.
-      var url = Uri.parse("http://localhost:3000/api/acidentes/listar/$empresaSelecionada");
+      var url = Uri.parse("https://meu-sst-backend.onrender.com/api/acidentes/listar/$empresaSelecionada");
       
       // Se o usuário selecionou Visão Geral, para evitar travar com 10.000 linhas,
       // O ideal é ver por empresa. Mas vamos deixar mandar o 0 caso você implemente depois.
@@ -69,7 +69,7 @@ class _AcidentesScreenState extends State<AcidentesScreen> {
 
     if (confirmar) {
       setState(() => carregando = true);
-      var url = Uri.parse("http://localhost:3000/api/acidentes/apagar-tudo/$empresaSelecionada");
+      var url = Uri.parse("https://meu-sst-backend.onrender.com/api/acidentes/apagar-tudo/$empresaSelecionada");
       await http.delete(url);
       buscarAcidentes(); 
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Base de dados apagada com sucesso!"), backgroundColor: Colors.green));
@@ -78,7 +78,7 @@ class _AcidentesScreenState extends State<AcidentesScreen> {
 
   Future<void> excluirAcidente(int id) async {
     setState(() => carregando = true);
-    var url = Uri.parse("http://localhost:3000/api/acidentes/excluir/$id");
+    var url = Uri.parse("https://meu-sst-backend.onrender.com/api/acidentes/excluir/$id");
     await http.delete(url);
     buscarAcidentes(); 
   }
