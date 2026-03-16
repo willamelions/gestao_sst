@@ -33,12 +33,13 @@ class _LoginScreenState extends State<LoginScreen> {
         var dados = jsonDecode(resposta.body);
         
         // Salva as permissões na sessão
+        // Salva as permissões de forma 100% segura (Aceita 1 ou true)
         Sessao.nome = dados['nome'];
         Sessao.perfilNome = dados['perfil_nome'];
-        Sessao.isAdmin = dados['is_admin'] == 1;
-        Sessao.fapEditar = dados['fap_editar'] == 1;
-        Sessao.absenteismoEditar = dados['absenteismo_editar'] == 1;
-
+        Sessao.isAdmin = dados['is_admin'] == 1 || dados['is_admin'] == true;
+        Sessao.fapEditar = dados['fap_editar'] == 1 || dados['fap_editar'] == true;
+        Sessao.absenteismoEditar = dados['absenteismo_editar'] == 1 || dados['absenteismo_editar'] == true;
+        
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LayoutBase()));
       } else {
         var erro = jsonDecode(resposta.body)['erro'] ?? "Erro de login";
