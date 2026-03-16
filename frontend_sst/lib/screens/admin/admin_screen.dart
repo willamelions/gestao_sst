@@ -34,7 +34,7 @@ class _AdminScreenState extends State<AdminScreen> {
   Future<void> buscarDados() async {
     setState(() => carregando = true);
     try {
-      var resUsuarios = await http.get(Uri.parse("https://meu-sst-backend.onrender.com/api/admin/usuarios"));
+      var resUsuarios = await http.get(Uri.parse("https://gestao-sst.onrender.com/api/admin/usuarios"));
       var resPerfis = await http.get(Uri.parse("https://meu-sst-backend.onrender.com/api/admin/perfis"));
       
       if (resUsuarios.statusCode == 200 && resPerfis.statusCode == 200) {
@@ -66,7 +66,7 @@ class _AdminScreenState extends State<AdminScreen> {
 
     setState(() => carregando = true);
     var res = await http.post(
-      Uri.parse("https://meu-sst-backend.onrender.com/api/admin/usuarios"),
+      Uri.parse("https://gestao-sst.onrender.com/api/admin/usuarios"),
       headers: {"Content-Type": "application/json"},
       body: jsonEncode({"nome": nomeCtrl.text, "email": emailCtrl.text, "senha": senhaCtrl.text, "perfil_id": int.parse(perfilSelecionado!)}),
     );
@@ -83,7 +83,7 @@ class _AdminScreenState extends State<AdminScreen> {
 
   Future<void> excluirUsuario(int id) async {
     setState(() => carregando = true);
-    await http.delete(Uri.parse("https://meu-sst-backend.onrender.com/api/admin/usuarios/$id"));
+    await http.delete(Uri.parse("https://gestao-sst.onrender.com/api/admin/usuarios/$id"));
     buscarDados();
     _aviso("Usuário excluído.", Colors.green);
   }
