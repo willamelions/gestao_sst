@@ -1,8 +1,9 @@
 const express = require('express');
 const cors = require('cors');
-const path = require('path'); // IMPORTANTE: Adicione esta linha
-const db = require('./config/db');
+const path = require('path');
+const db = require('./config/db'); // Ajustado para rodar de dentro de /src
 
+// Importação das Rotas (Como server.js está em /src, o caminho é relativo a ele)
 const importacaoRoutes = require('./routes/importacao'); 
 const dashboardRoutes = require('./routes/dashboard');
 const acidentesRoutes = require('./routes/acidentes');
@@ -16,12 +17,19 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// --- CONFIGURAÇÃO PARA SERVIR O FRONTEND FLUTTER ---
+// =============================================================
+// 1. CONFIGURAÇÃO DOS CAMINHOS (IMPORTANTE!)
+// =============================================================
+// Como este arquivo está em 'backend/src', precisamos subir um nível (..) 
+// para chegar na pasta 'public/web'
+const publicPath = path.join(__dirname, '..', 'public', 'web');
 
-// 1. Diz ao Express para servir os arquivos da pasta 'public'
-app.use(express.static(path.join(__dirname, 'public')));
+// Servir arquivos estáticos do Flutter
+app.use(express.static(publicPath));
 
-// 2. Suas rotas da API (Mantenha todas aqui)
+// =============================================================
+// 2. ROTAS DA API
+// =============================================================
 app.use('/api', importacaoRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/acidentes', acidentesRoutes);
@@ -30,14 +38,17 @@ app.use('/api/absenteismo', absenteismoRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
 
-// 3. ROTA CORINGA: Se o usuário acessar qualquer rota que não seja da API,
-// o servidor envia o index.html do Flutter. Isso permite que o Refresh da página funcione.
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// =============================================================
+// 3. ROTA CORINGA (CORRIGIDA)
+// =============================================================
+// Usa a expressão regular /.*/ para evitar o erro do Render
+app.get(/.*/, (req, res) => {
+  res.sendFile(path.join(publicPath, 'index.html'));
 });
 
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+  console.log(`🚀 Servidor rodando na porta ${PORT}`);
+  console.log(`📂 Servindo Flutter de: ${publicPath}`);
 });
