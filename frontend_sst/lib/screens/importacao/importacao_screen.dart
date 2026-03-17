@@ -36,7 +36,7 @@ class _ImportacaoScreenState extends State<ImportacaoScreen> {
       Uint8List? bytesDoArquivo = arquivo.bytes;
 
       if (bytesDoArquivo != null) {
-        var uri = Uri.parse("https://meu-sst-backend.onrender.com/api/upload");
+        var uri = Uri.parse("https://gestao-sst.onrender.com/api/upload");
         var request = http.MultipartRequest("POST", uri);
 
         // Manda o ID da empresa para o Node.js saber onde salvar!

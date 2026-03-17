@@ -38,7 +38,7 @@ class _FapScreenState extends State<FapScreen> {
   Future<void> buscarHistorico() async {
     setState(() => carregando = true);
     try {
-      var url = Uri.parse("https://meu-sst-backend.onrender.com/api/fap/historico/$empresaSelecionada");
+      var url = Uri.parse("https://gestao-sst.onrender.com/api/fap/historico/$empresaSelecionada");
       var resposta = await http.get(url);
       if (resposta.statusCode == 200) {
         setState(() {
@@ -74,7 +74,7 @@ class _FapScreenState extends State<FapScreen> {
     }
 
     setState(() => carregando = true);
-    var url = Uri.parse("https://meu-sst-backend.onrender.com/api/fap/registrar");
+    var url = Uri.parse("https://gestao-sst.onrender.com/api/fap/registrar");
     var resposta = await http.post(
       url, headers: {"Content-Type": "application/json"},
       body: jsonEncode({
@@ -98,7 +98,7 @@ class _FapScreenState extends State<FapScreen> {
 
   Future<void> excluirFap(int id) async {
     setState(() => carregando = true);
-    var url = Uri.parse("https://meu-sst-backend.onrender.com/api/fap/excluir/$id");
+    var url = Uri.parse("https://gestao-sst.onrender.com/api/fap/excluir/$id");
     await http.delete(url);
     buscarHistorico();
     _mostrarAviso("Registro excluído com sucesso.", Colors.green);

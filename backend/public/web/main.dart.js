@@ -93470,7 +93470,7 @@ iH(){var s=0,r=A.R(t.H),q=1,p=[],o=this,n,m,l,k
 var $async$iH=A.M(function(a,b){if(a===1){p.push(b)
 s=q}for(;;)switch(s){case 0:o.R(new A.aoK(o))
 q=3
-n=A.d5("https://meu-sst-backend.onrender.com/api/absenteismo/indicadores/"+o.f)
+n=A.d5("https://gestao-sst.onrender.com/api/absenteismo/indicadores/"+o.f)
 s=6
 return A.T(A.tP(n,null),$async$iH)
 case 6:m=b
@@ -93516,7 +93516,7 @@ s=1
 break}if(p.as==="M\xe9dico"&&p.x.a.a.length===0){p.qj("CID Obrigat\xf3rio.",B.a7)
 s=1
 break}p.R(new A.aoP(p))
-l=A.d5("https://meu-sst-backend.onrender.com/api/absenteismo/registrar")
+l=A.d5("https://gestao-sst.onrender.com/api/absenteismo/registrar")
 n=t.N
 m=A.av(["Content-Type","application/json"],n,n)
 k=A.fj(p.f,null)
@@ -93545,7 +93545,7 @@ arz(a){var s=0,r=A.R(t.H),q=this
 var $async$Bt=A.M(function(b,c){if(b===1)return A.O(c,r)
 for(;;)switch(s){case 0:q.R(new A.aoO(q))
 s=2
-return A.T(A.a3f(A.d5("https://meu-sst-backend.onrender.com/api/absenteismo/excluir/"+a)),$async$Bt)
+return A.T(A.a3f(A.d5("https://gestao-sst.onrender.com/api/absenteismo/excluir/"+a)),$async$Bt)
 case 2:q.iH()
 q.qj("Exclu\xeddo.",B.bq)
 return A.P(null,r)}})
@@ -93705,7 +93705,7 @@ oF(){var s=0,r=A.R(t.H),q,p=2,o=[],n=this,m,l,k,j
 var $async$oF=A.M(function(a,b){if(a===1){o.push(b)
 s=p}for(;;)switch(s){case 0:n.R(new A.aoX(n))
 p=4
-m=A.d5("https://meu-sst-backend.onrender.com/api/acidentes/listar/"+n.f)
+m=A.d5("https://gestao-sst.onrender.com/api/acidentes/listar/"+n.f)
 if(n.f==="0"){n.R(new A.aoY(n))
 n.c.ad(t.Pu).f.o3(A.rT(null,null,null,B.ea,null,B.E,null,A.L("Selecione um CNPJ espec\xedfico para listar a tabela de acidentes.",null,null,null,null,null,null,null,null),null,B.df,null,null,null,null,null,null,null,null,null,null))
 s=1
@@ -93738,7 +93738,7 @@ s=(n==null?!1:n)?4:5
 break
 case 4:p.R(new A.ap4(p))
 s=6
-return A.T(A.a3f(A.d5("https://meu-sst-backend.onrender.com/api/acidentes/apagar-tudo/"+p.f)),$async$w0)
+return A.T(A.a3f(A.d5("https://gestao-sst.onrender.com/api/acidentes/apagar-tudo/"+p.f)),$async$w0)
 case 6:p.oF()
 p.c.ad(t.Pu).f.o3(A.rT(null,null,null,B.bq,null,B.E,null,A.L("Base de dados apagada com sucesso!",null,null,null,null,null,null,null,null),null,B.df,null,null,null,null,null,null,null,null,null,null))
 case 5:case 1:return A.P(q,r)}})
@@ -93748,7 +93748,7 @@ arx(a){var s=0,r=A.R(t.H),q=this
 var $async$Br=A.M(function(b,c){if(b===1)return A.O(c,r)
 for(;;)switch(s){case 0:q.R(new A.ap0(q))
 s=2
-return A.T(A.a3f(A.d5("https://meu-sst-backend.onrender.com/api/acidentes/excluir/"+a)),$async$Br)
+return A.T(A.a3f(A.d5("https://gestao-sst.onrender.com/api/acidentes/excluir/"+a)),$async$Br)
 case 2:q.oF()
 return A.P(null,r)}})
 return A.Q($async$Br,r)},
@@ -93894,9 +93894,9 @@ oG(){var s=0,r=A.R(t.H),q=1,p=[],o=this,n,m,l,k,j,i,h,g,f,e,d,c,b,a,a0,a1,a2
 var $async$oG=A.M(function(a3,a4){if(a3===1){p.push(a4)
 s=q}for(;;)switch(s){case 0:o.R(new A.arI(o))
 q=3
-n=A.d5("https://meu-sst-backend.onrender.com/api/dashboard/indicadores/"+o.d)
-m=A.d5("https://meu-sst-backend.onrender.com/api/dashboard/grafico-tipo/"+o.d)
-l=A.d5("https://meu-sst-backend.onrender.com/api/dashboard/grafico-mensal/"+o.d)
+n=A.d5("https://gestao-sst.onrender.com/api/dashboard/indicadores/"+o.d)
+m=A.d5("https://gestao-sst.onrender.com/api/dashboard/grafico-tipo/"+o.d)
+l=A.d5("https://gestao-sst.onrender.com/api/dashboard/grafico-mensal/"+o.d)
 s=6
 return A.T(A.tP(n,null),$async$oG)
 case 6:k=a4
@@ -93999,7 +93999,7 @@ oH(){var s=0,r=A.R(t.H),q=1,p=[],o=this,n,m,l,k
 var $async$oH=A.M(function(a,b){if(a===1){p.push(b)
 s=q}for(;;)switch(s){case 0:o.R(new A.at6(o))
 q=3
-n=A.d5("https://meu-sst-backend.onrender.com/api/fap/historico/"+o.f)
+n=A.d5("https://gestao-sst.onrender.com/api/fap/historico/"+o.f)
 s=6
 return A.T(A.tP(n,null),$async$oH)
 case 6:m=b
@@ -94033,7 +94033,7 @@ if(l==null)l=0
 if(l<0.5||l>2){p.oi("O FAP deve estar entre 0.5000 e 2.0000.",B.a7)
 s=1
 break}p.R(new A.atc(p))
-k=A.d5("https://meu-sst-backend.onrender.com/api/fap/registrar")
+k=A.d5("https://gestao-sst.onrender.com/api/fap/registrar")
 m=t.N
 j=A.av(["Content-Type","application/json"],m,m)
 i=A.fj(p.f,null)
@@ -94063,7 +94063,7 @@ ary(a){var s=0,r=A.R(t.H),q=this
 var $async$Bs=A.M(function(b,c){if(b===1)return A.O(c,r)
 for(;;)switch(s){case 0:q.R(new A.ata(q))
 s=2
-return A.T(A.a3f(A.d5("https://meu-sst-backend.onrender.com/api/fap/excluir/"+a)),$async$Bs)
+return A.T(A.a3f(A.d5("https://gestao-sst.onrender.com/api/fap/excluir/"+a)),$async$Bs)
 case 2:q.oH()
 q.oi("Registro exclu\xeddo com sucesso.",B.bq)
 return A.P(null,r)}})
@@ -94208,7 +94208,7 @@ j=J.yI(k.a)
 i=j.c
 s=i!=null?7:8
 break
-case 7:m=A.aUW("POST",A.d5("https://meu-sst-backend.onrender.com/api/upload"))
+case 7:m=A.aUW("POST",A.d5("https://gestao-sst.onrender.com/api/upload"))
 m.x.m(0,"empresa_id",n.f)
 h=j.b
 g=A.aKt(i,t.Cm)
@@ -94458,7 +94458,7 @@ vk(){var s=0,r=A.R(t.H),q=1,p=[],o=this,n,m,l,k
 var $async$vk=A.M(function(a,b){if(a===1){p.push(b)
 s=q}for(;;)switch(s){case 0:o.R(new A.awK(o))
 q=3
-n=A.d5("https://meu-sst-backend.onrender.com/api/fap/estrategico/"+o.f)
+n=A.d5("https://gestao-sst.onrender.com/api/fap/estrategico/"+o.f)
 s=6
 return A.T(A.tP(n,null),$async$vk)
 case 6:m=b
